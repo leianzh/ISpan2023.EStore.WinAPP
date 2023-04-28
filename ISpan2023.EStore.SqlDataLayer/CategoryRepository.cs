@@ -30,7 +30,7 @@ namespace ISpan2023.EStore.SqlDataLayer
 					}
 					else 
 					{
-						return null;
+						return null;//
 					}
 				}
 			}
