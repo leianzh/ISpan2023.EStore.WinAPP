@@ -36,6 +36,11 @@
 			this.buttonCategory = new System.Windows.Forms.Button();
 			this.textBoxCategory = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.btnSearchProducts = new System.Windows.Forms.Button();
+			this.btnAddNews = new System.Windows.Forms.Button();
+			this.btnEditNews = new System.Windows.Forms.Button();
+			this.label2 = new System.Windows.Forms.Label();
+			this.txtNewsId = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -113,11 +118,62 @@
 			this.label1.TabIndex = 7;
 			this.label1.Text = "Id:";
 			// 
+			// btnSearchProducts
+			// 
+			this.btnSearchProducts.Location = new System.Drawing.Point(34, 240);
+			this.btnSearchProducts.Name = "btnSearchProducts";
+			this.btnSearchProducts.Size = new System.Drawing.Size(107, 23);
+			this.btnSearchProducts.TabIndex = 8;
+			this.btnSearchProducts.Text = "取得所有商品";
+			this.btnSearchProducts.UseVisualStyleBackColor = true;
+			this.btnSearchProducts.Click += new System.EventHandler(this.btnSearchProducts_Click);
+			// 
+			// btnAddNews
+			// 
+			this.btnAddNews.Location = new System.Drawing.Point(47, 293);
+			this.btnAddNews.Name = "btnAddNews";
+			this.btnAddNews.Size = new System.Drawing.Size(75, 23);
+			this.btnAddNews.TabIndex = 9;
+			this.btnAddNews.Text = "新增News";
+			this.btnAddNews.UseVisualStyleBackColor = true;
+			this.btnAddNews.Click += new System.EventHandler(this.btnAddNews_Click);
+			// 
+			// btnEditNews
+			// 
+			this.btnEditNews.Location = new System.Drawing.Point(61, 354);
+			this.btnEditNews.Name = "btnEditNews";
+			this.btnEditNews.Size = new System.Drawing.Size(75, 23);
+			this.btnEditNews.TabIndex = 10;
+			this.btnEditNews.Text = "Edit News";
+			this.btnEditNews.UseVisualStyleBackColor = true;
+			this.btnEditNews.Click += new System.EventHandler(this.btnEditNews_Click);
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(147, 365);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(40, 12);
+			this.label2.TabIndex = 11;
+			this.label2.Text = "NewsId";
+			// 
+			// txtNewsId
+			// 
+			this.txtNewsId.Location = new System.Drawing.Point(202, 356);
+			this.txtNewsId.Name = "txtNewsId";
+			this.txtNewsId.Size = new System.Drawing.Size(100, 22);
+			this.txtNewsId.TabIndex = 12;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.txtNewsId);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.btnEditNews);
+			this.Controls.Add(this.btnAddNews);
+			this.Controls.Add(this.btnSearchProducts);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.textBoxCategory);
 			this.Controls.Add(this.buttonCategory);
@@ -143,6 +199,11 @@
 		private System.Windows.Forms.Button buttonCategory;
 		private System.Windows.Forms.TextBox textBoxCategory;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button btnSearchProducts;
+		private System.Windows.Forms.Button btnAddNews;
+		private System.Windows.Forms.Button btnEditNews;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.TextBox txtNewsId;
 	}
 }
 

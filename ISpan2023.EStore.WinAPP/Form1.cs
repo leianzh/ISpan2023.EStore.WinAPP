@@ -71,5 +71,30 @@ namespace ISpan2023.EStore.WinAPP
 			var frm = new FormEditCategory(categoryId);
 			frm.ShowDialog();
 		}
+
+		private void btnSearchProducts_Click(object sender, EventArgs e)
+		{
+			var frm = new FormProducts();
+			frm.ShowDialog();
+		}
+
+		private void btnAddNews_Click(object sender, EventArgs e)
+		{
+			var frm = new FormAddNews();
+			frm.ShowDialog();
+		}
+
+		private void btnEditNews_Click(object sender, EventArgs e)
+		{
+			bool isInt = int.TryParse(txtNewsId.Text, out int newsId);
+			if (!isInt)
+			{
+				MessageBox.Show("請輸入 News Id, 再試一次");
+				return;
+			}
+
+			var frm = new FormEditNews(newsId);
+			frm.ShowDialog();
+		}
 	}
 }

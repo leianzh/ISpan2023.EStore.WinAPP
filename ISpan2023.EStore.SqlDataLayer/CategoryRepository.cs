@@ -23,14 +23,18 @@ namespace ISpan2023.EStore.SqlDataLayer
 					if (reader.Read())
 					{
 						var category = new Category();
-						category.Id = int.Parse(reader["Id"].ToString());
-						category.Name = reader["Name"].ToString();
-						category.DisplaryOrder = int.Parse(reader["DisplayOrder"].ToString());
+						//category.Id = int.Parse(reader["Id"].ToString());
+						//category.Name = reader["Name"].ToString();
+						//category.DisplaryOrder = int.Parse(reader["DisplayOrder"].ToString());
+						//return category;
+						category.Id = reader.GetInt32("Id",0);
+						category.Name = reader.GetString("Name");
+						category.DisplaryOrder = reader.GetInt32("DisplayOrder", 0);
 						return category;
 					}
 					else 
 					{
-						return null;//
+						return null;
 					}
 				}
 			}

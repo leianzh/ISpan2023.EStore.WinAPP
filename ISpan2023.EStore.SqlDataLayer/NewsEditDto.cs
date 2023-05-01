@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ISpan2023.EStore.SqlDataLayer
 {
-	public class Category//查詢1筆
+	public class NewsEditDto
 	{
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int DisplaryOrder { get; set; }
+		public string Title { get; set; }
+		public string Description { get; set; }
+        public DateTime ModifiedTime { get; set; }
     }
 }
