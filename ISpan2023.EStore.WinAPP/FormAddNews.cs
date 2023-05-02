@@ -23,10 +23,11 @@ namespace ISpan2023.EStore.WinAPP
 			var news = new NewsDto
 			{
 				Title = txtTitle.Text,
-				Description = txtDescription.Text,
+				Description = txtDescription.Text
 			};
+
 			int id = new NewsRepository().Create(news);
-			MessageBox.Show($"紀錄已新增id={id}");
+			MessageBox.Show($"記錄已新增, id={id}");
 		}
 	}
 }

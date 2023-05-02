@@ -43,6 +43,7 @@
 			this.txtNewsId = new System.Windows.Forms.TextBox();
 			this.btnDeleteNews = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.btnAddCategories = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -191,11 +192,22 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "維護News";
 			// 
+			// btnAddCategories
+			// 
+			this.btnAddCategories.Location = new System.Drawing.Point(180, 230);
+			this.btnAddCategories.Name = "btnAddCategories";
+			this.btnAddCategories.Size = new System.Drawing.Size(106, 23);
+			this.btnAddCategories.TabIndex = 15;
+			this.btnAddCategories.Text = "新增Categories";
+			this.btnAddCategories.UseVisualStyleBackColor = true;
+			this.btnAddCategories.Click += new System.EventHandler(this.btnAddCategories_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btnAddCategories);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.btnSearchProducts);
 			this.Controls.Add(this.label1);
@@ -232,6 +244,7 @@
 		private System.Windows.Forms.TextBox txtNewsId;
 		private System.Windows.Forms.Button btnDeleteNews;
 		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.Button btnAddCategories;
 	}
 }
 

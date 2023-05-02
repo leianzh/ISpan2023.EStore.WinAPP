@@ -115,5 +115,11 @@ namespace ISpan2023.EStore.WinAPP
 				MessageBox.Show("沒有紀錄被刪除，可能此紀錄不存在");
 			}
 		}
+
+		private void btnAddCategories_Click(object sender, EventArgs e)
+		{
+			var frm = new FormAddCategory();
+			frm.ShowDialog();
+		}
 	}
 }

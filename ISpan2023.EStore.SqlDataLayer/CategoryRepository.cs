@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace ISpan2023.EStore.SqlDataLayer
 						//return category;
 						category.Id = reader.GetInt32("Id",0);
 						category.Name = reader.GetString("Name");
-						category.DisplaryOrder = reader.GetInt32("DisplayOrder", 0);
+						category.DisplayOrder = reader.GetInt32("DisplayOrder", 0);
 						return category;
 					}
 					else 
@@ -39,6 +40,48 @@ namespace ISpan2023.EStore.SqlDataLayer
 				}
 			}
 		}
-		
+		public  int Create(Category dto) 
+		{
+			string sql = @"SET NOCOUNT ON;
+INSERT INTO Categories
+(Name,DisplayOrder)
+VALUES
+(@Name,@DisplayOrder);
+SET @newId = SCOPE_IDENTITY()";
+			var parameters = SqlParameterBuilder.Create()
+			.AddNvarchar("@Name",30,dto.Name)
+				.AddInt("@DisplayOrder", dto.DisplayOrder)
+				.AddOutputInt("@newId")
+				.Build();
+			using(var conn = SqlDb.GetConnection("default")) 
+			{
+				conn.Open();
+				using(var cmd = conn.CreateCommand()) 
+				{
+					cmd.CommandText = sql;
+					cmd.Parameters.AddRange(parameters);
+					cmd.ExecuteNonQuery();
+					return (int)cmd.Parameters["@newId"].Value;
+
+				}
+			}
+		}
+		public int Update(Category dto)
+		{
+			string sql = @"UPDATE Categories SET
+Name =@Name,
+DisplayOrder=@DisplayOrder,
+WHERE
+Id=@Id";
+			SqlParameter[] parameters = SqlParameterBuilder.Create()
+				.AddNvarchar("@Name", 30, dto.Name)
+				.AddInt("@DisplayOrder", dto.DisplayOrder)
+				.AddInt("@Id", dto.Id)
+				.Build();
+			return SqlDb.UpdateOrDelete(SqlDb.GetConnection,
+				sql,
+				parameters);
+		}
+
 	}
 }

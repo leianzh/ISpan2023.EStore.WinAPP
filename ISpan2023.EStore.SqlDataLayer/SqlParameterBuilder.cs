@@ -23,6 +23,19 @@ namespace ISpan2023.EStore.SqlDataLayer
 
 			return this;
 		}
+		public SqlParameterBuilder AddNullableInt(string name, int? value)
+		{
+			return value.HasValue
+				? AddInt(name, value.Value)
+				: AddNullInt(name);
+		}
+		public SqlParameterBuilder AddNullInt(string name)
+		{
+			var parameter = new SqlParameter(name, SqlDbType.Int) { Value = DBNull.Value };
+			_parameters.Add(parameter);
+
+			return this;
+		}
 		public SqlParameterBuilder AddOutputInt(string name) 
 		{
 			var parameter = new SqlParameter(name, SqlDbType.Int) { Direction = ParameterDirection.Output };

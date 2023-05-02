@@ -31,7 +31,7 @@ namespace ISpan2023.EStore.WinAPP
 			}
 			//bind data
 			textBoxName.Text = category.Name;
-			textBoxDO.Text = category.DisplaryOrder.ToString();
+			textBoxDO.Text = category.DisplayOrder.ToString();
 		}
 	}
 }
