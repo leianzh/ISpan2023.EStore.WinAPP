@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISpan2023.EStore.SqlDataLayer
 {
-	public static class sqlDataReaderExtensions
+	public static class sqlDataReaderExtensions//擴充方法
 	{
 		public static string GetString(this SqlDataReader reader,string columName) 
 		{

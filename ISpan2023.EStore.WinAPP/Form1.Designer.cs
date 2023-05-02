@@ -41,11 +41,14 @@
 			this.btnEditNews = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
 			this.txtNewsId = new System.Windows.Forms.TextBox();
+			this.btnDeleteNews = new System.Windows.Forms.Button();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(34, 22);
+			this.button1.Location = new System.Drawing.Point(34, 24);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(102, 23);
 			this.button1.TabIndex = 0;
@@ -120,7 +123,7 @@
 			// 
 			// btnSearchProducts
 			// 
-			this.btnSearchProducts.Location = new System.Drawing.Point(34, 240);
+			this.btnSearchProducts.Location = new System.Drawing.Point(34, 230);
 			this.btnSearchProducts.Name = "btnSearchProducts";
 			this.btnSearchProducts.Size = new System.Drawing.Size(107, 23);
 			this.btnSearchProducts.TabIndex = 8;
@@ -130,7 +133,7 @@
 			// 
 			// btnAddNews
 			// 
-			this.btnAddNews.Location = new System.Drawing.Point(47, 293);
+			this.btnAddNews.Location = new System.Drawing.Point(16, 21);
 			this.btnAddNews.Name = "btnAddNews";
 			this.btnAddNews.Size = new System.Drawing.Size(75, 23);
 			this.btnAddNews.TabIndex = 9;
@@ -140,7 +143,7 @@
 			// 
 			// btnEditNews
 			// 
-			this.btnEditNews.Location = new System.Drawing.Point(61, 354);
+			this.btnEditNews.Location = new System.Drawing.Point(16, 61);
 			this.btnEditNews.Name = "btnEditNews";
 			this.btnEditNews.Size = new System.Drawing.Size(75, 23);
 			this.btnEditNews.TabIndex = 10;
@@ -151,7 +154,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(147, 365);
+			this.label2.Location = new System.Drawing.Point(106, 61);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(40, 12);
 			this.label2.TabIndex = 11;
@@ -159,20 +162,41 @@
 			// 
 			// txtNewsId
 			// 
-			this.txtNewsId.Location = new System.Drawing.Point(202, 356);
+			this.txtNewsId.Location = new System.Drawing.Point(152, 61);
 			this.txtNewsId.Name = "txtNewsId";
 			this.txtNewsId.Size = new System.Drawing.Size(100, 22);
 			this.txtNewsId.TabIndex = 12;
+			// 
+			// btnDeleteNews
+			// 
+			this.btnDeleteNews.Location = new System.Drawing.Point(16, 103);
+			this.btnDeleteNews.Name = "btnDeleteNews";
+			this.btnDeleteNews.Size = new System.Drawing.Size(75, 23);
+			this.btnDeleteNews.TabIndex = 13;
+			this.btnDeleteNews.Text = "Delete News";
+			this.btnDeleteNews.UseVisualStyleBackColor = true;
+			this.btnDeleteNews.Click += new System.EventHandler(this.btnDeleteNews_Click);
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.btnAddNews);
+			this.groupBox1.Controls.Add(this.btnDeleteNews);
+			this.groupBox1.Controls.Add(this.btnEditNews);
+			this.groupBox1.Controls.Add(this.txtNewsId);
+			this.groupBox1.Controls.Add(this.label2);
+			this.groupBox1.Location = new System.Drawing.Point(34, 269);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(353, 155);
+			this.groupBox1.TabIndex = 14;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "維護News";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.txtNewsId);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.btnEditNews);
-			this.Controls.Add(this.btnAddNews);
+			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.btnSearchProducts);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.textBoxCategory);
@@ -184,6 +208,8 @@
 			this.Controls.Add(this.button1);
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -204,6 +230,8 @@
 		private System.Windows.Forms.Button btnEditNews;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox txtNewsId;
+		private System.Windows.Forms.Button btnDeleteNews;
+		private System.Windows.Forms.GroupBox groupBox1;
 	}
 }
 

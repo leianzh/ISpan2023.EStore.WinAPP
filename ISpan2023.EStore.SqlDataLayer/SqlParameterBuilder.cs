@@ -45,6 +45,7 @@ namespace ISpan2023.EStore.SqlDataLayer
 			return this;
 		}
 
+
 		public SqlParameter[] Build() 
 		{
 			return _parameters.ToArray();

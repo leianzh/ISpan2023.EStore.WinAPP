@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISpan2023.EStore.WinAPP", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISpan2023.EStore.SqlDataLayer", "ISpan2023.EStore.SqlDataLayer\ISpan2023.EStore.SqlDataLayer.csproj", "{48E4FA94-931F-4A9C-8B37-59BFB2311936}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{1DFDD196-2C1D-4CC8-AAC4-2C074AFD3D16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{374848A0-4B8A-4953-AD1B-3BE7B2017E12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{48E4FA94-931F-4A9C-8B37-59BFB2311936}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48E4FA94-931F-4A9C-8B37-59BFB2311936}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48E4FA94-931F-4A9C-8B37-59BFB2311936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DFDD196-2C1D-4CC8-AAC4-2C074AFD3D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFDD196-2C1D-4CC8-AAC4-2C074AFD3D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFDD196-2C1D-4CC8-AAC4-2C074AFD3D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DFDD196-2C1D-4CC8-AAC4-2C074AFD3D16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{374848A0-4B8A-4953-AD1B-3BE7B2017E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{374848A0-4B8A-4953-AD1B-3BE7B2017E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{374848A0-4B8A-4953-AD1B-3BE7B2017E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{374848A0-4B8A-4953-AD1B-3BE7B2017E12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,7 +21,7 @@ namespace ISpan2023.EStore.WinAPP
 
 		private void button1_Click(object sender, EventArgs e)//取得連線字串
 		{
-			
+
 			string connStr = SqlDb.GetConnectString("default");
 			labelConnStr.Text = connStr;
 		}
@@ -44,25 +44,25 @@ namespace ISpan2023.EStore.WinAPP
 		private void btnUsing_Click(object sender, EventArgs e)
 		{
 			SqlDb.Pooling = checkBoxpooling.Checked;
-			using (SqlConnection conn = SqlDb.GetConnection("default")) 
+			using (SqlConnection conn = SqlDb.GetConnection("default"))
 			{
 				conn.Open();
 				string sql = "SELECT ID FROM News";
-				using (SqlCommand command = new SqlCommand(sql, conn)) 
+				using (SqlCommand command = new SqlCommand(sql, conn))
 				{
 					SqlDataReader reader = command.ExecuteReader();
 					reader.Close();
 
 				}
-					
+
 			}
-				
+
 		}
 
 		private void buttonCategory_Click(object sender, EventArgs e)
 		{
 			bool isInt = int.TryParse(textBoxCategory.Text, out int categoryId);
-			if (!isInt) 
+			if (!isInt)
 			{
 				MessageBox.Show("請輸入Category id,再試一次");
 				return;
@@ -95,6 +95,25 @@ namespace ISpan2023.EStore.WinAPP
 
 			var frm = new FormEditNews(newsId);
 			frm.ShowDialog();
+		}
+
+		private void btnDeleteNews_Click(object sender, EventArgs e)
+		{
+			bool isInt = int.TryParse(txtNewsId.Text, out int newsId);
+			if (!isInt)
+			{
+				MessageBox.Show("請輸入 News Id,再試一次");
+				return;
+			}
+			int rowAffected = new NewsRepository().Delete(newsId);
+			if (rowAffected == 1) 
+			{
+				MessageBox.Show("紀錄已刪除");
+			}
+			else 
+			{
+				MessageBox.Show("沒有紀錄被刪除，可能此紀錄不存在");
+			}
 		}
 	}
 }

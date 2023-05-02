@@ -40,5 +40,28 @@ namespace ISpan2023.EStore.WinAPP
 
 
 		}
+
+		private void btnUpdate_Click(object sender, EventArgs e)
+		{
+			var news = new NewsEditDto
+			{
+				Id = this._newsId,
+				Title = txtTitle.Text,
+				Description = txtDescription.Text,
+				ModifiedTime = DateTime.Now,
+			};
+            
+			int rowsAffected = new NewsRepository().Update(news);
+			//如果傳回筆數是1,表示有正確更新一筆
+			if (rowsAffected > 0) 
+			{
+				MessageBox.Show("紀錄已更新");
+			}
+			else 
+			{
+				MessageBox.Show("紀錄沒有被異動，可能紀錄已經被刪除");
+			}
+			FormEditNews_Load(this,EventArgs.Empty);
+		}
 	}
 }

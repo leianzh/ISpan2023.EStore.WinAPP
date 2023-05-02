@@ -13,6 +13,32 @@ namespace ISpan2023.EStore.SqlDataLayer
 	{
 		public List<ProductDto> Search(int? categoryId = null)
 		{
+			Func<SqlConnection> funcConn = SqlDb.GetConnection;
+			#region sql
+			var sql = @"select P.Id,P.Name,P.Price,C.Name as CategoryName
+from Products as P
+inner join Categories as C on C.Id =P.CategoryId";
+			if (categoryId.HasValue)
+			{
+				sql = sql + " where C.Id= " + categoryId.Value;
+			}
+			sql = sql + " order by C.DisplayOrder";
+			#endregion
+			Func<SqlDataReader, ProductDto> funcAssembler = reader =>
+			{
+				return new ProductDto()
+				{
+					ProductId = reader.GetInt32("Id", 0),
+					ProductName = reader.GetString("Name"),
+					Price = reader.GetInt32("Price", 0),
+					CategoryName = reader.GetString("CategoryName")
+				};
+			};
+			return SqlDb.Search<ProductDto>(funcConn, funcAssembler, sql);
+			
+		}
+		public List<ProductDto> Search2(int? categoryId = null)
+		{
 			using (SqlConnection conn = SqlDb.GetConnection("default"))
 			{
 				conn.Open();

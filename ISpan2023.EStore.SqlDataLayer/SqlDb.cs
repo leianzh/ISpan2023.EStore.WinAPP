@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -34,5 +35,78 @@ namespace ISpan2023.EStore.SqlDataLayer
 			string connStr = GetConnectString(keyOfConnString);
 			return new SqlConnection(connStr);
 		}
+		public static SqlConnection GetConnection()
+		{
+			string connStr = GetConnectString("default");
+			return new SqlConnection(connStr);
+		}
+
+		public static int UpdateOrDelete(Func<SqlConnection>funcConn,string sql,params SqlParameter[] parameters) 
+		{
+			using(var conn =funcConn()) 
+			{
+				conn.Open();
+				using(var cmd = new SqlCommand(sql,conn))
+				{
+					if (parameters != null) cmd.Parameters.AddRange(parameters);
+					return cmd.ExecuteNonQuery();
+				}
+			}
+
+		}
+		public static int Create(Func<SqlConnection> funcConn, string sql, params SqlParameter[] parameters) 
+		{
+			sql += ";SELECT SCOPE_IDENTITY()";
+			using(var conn = funcConn()) 
+			{
+				conn.Open();
+				using(var cmd =new SqlCommand(sql, conn)) 
+				{
+					if(parameters != null) cmd.Parameters.AddRange(parameters);	
+					return Convert.ToInt32(cmd.ExecuteScalar());
+				}
+			}
+		}
+		public static T Get<T>(Func<SqlConnection>funcConn,Func<SqlDataReader,T>funcAssembler,string sql,params SqlParameter[] parameters) 
+		{
+			using (var conn = funcConn())
+			{
+				using (var cmd = new SqlCommand(sql, conn))
+				{
+					if (parameters != null) cmd.Parameters.AddRange(parameters);
+					var reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+					return reader.Read()
+						? funcAssembler(reader)
+						: default(T);
+				}
+			}
+			
+		} 
+		public static List<T>Search<T>(Func<SqlConnection> funcConn,
+			Func<SqlDataReader,T>funcAssembler,
+			string sql,
+			params SqlParameter[] parameters)
+		{
+			List<T> list = new List<T>();
+			using (var conn = funcConn())
+			{
+				conn.Open();
+				using (var cmd = new SqlCommand(sql, conn)) 
+				{
+					if(parameters !=null) cmd.Parameters.AddRange(parameters);
+					var reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+					while (reader.Read()) 
+					{
+						T entity = funcAssembler(reader);
+						list.Add(entity);
+					}
+					return list;
+				}
+			}
+
+		}
+
+
 	}
+
 }

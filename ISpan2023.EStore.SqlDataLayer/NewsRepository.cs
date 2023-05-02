@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,26 @@ SET @newId = SCOPE_IDENTITY()";
 				}
 			}
 		}
-		public NewsEditDto Get(int newsId) 
+
+
+		public NewsEditDto Get(int newsId)
+		{
+			Func<SqlConnection> funcConn = SqlDb.GetConnection;
+			var sql = $"SELECT*FROM News WHERE Id={newsId}";
+			Func<SqlDataReader, NewsEditDto> funcAssembler = reader =>
+			{
+				return new NewsEditDto
+				{
+					Id = newsId,
+					Title = reader.GetString("title"),
+					Description = reader.GetString("description"),
+					ModifiedTime = reader.GetDateTime("ModifiedTime", DateTime.MinValue)
+
+				};
+			};
+			return SqlDb.Get(funcConn, funcAssembler, sql);
+		}
+		public NewsEditDto Get2(int newsId) 
 		{
 			using(SqlConnection conn = SqlDb.GetConnection("default")) 
 			{
@@ -74,5 +94,75 @@ SET @newId = SCOPE_IDENTITY()";
 			}
 		}
 
+		public int Update(NewsEditDto dto)
+		{
+			string sql = @"UPDATE News SET
+Title =@Title,
+Description=@Description,
+ModifiedTime=@ModifiedTime
+WHERE
+Id=@Id";
+			SqlParameter[]parameters = SqlParameterBuilder.Create()
+				.AddNvarchar("@Title",50,dto.Title)
+				.AddNvarchar("@Description",3000,dto.Description)
+				.AddDateTime("@ModifiedTime",dto.ModifiedTime)
+				.AddInt("@Id",dto.Id)
+				.Build();
+			return SqlDb.UpdateOrDelete(SqlDb.GetConnection,
+				sql,
+				parameters);
+		}
+		public int Update2(NewsEditDto dto)
+		{
+			string sql = @"UPDATE News SET
+Title =@Title,
+Description=@Description,
+ModifiedTime=@ModifiedTime
+WHERE
+Id=@Id";
+			SqlParameter[] parameters = SqlParameterBuilder.Create()
+				.AddNvarchar("@Title", 50, dto.Title)
+				.AddNvarchar("@Description", 3000, dto.Description)
+				.AddDateTime("@ModifiedTime", dto.ModifiedTime)
+				.AddInt("@Id", dto.Id)
+				.Build();
+			using (var conn = SqlDb.GetConnection("default"))
+			{
+				conn.Open();
+				using (var cmd = new SqlCommand(sql, conn))
+				{
+					cmd.Parameters.AddRange(parameters);
+					return cmd.ExecuteNonQuery();//傳回被異動的比數,諾為0,表示沒有異動紀錄
+				}
+			}
+		}
+		public int Delete(int newsId)
+		{
+			string sql = @"DELETE News WHERE Id=@Id";
+			SqlParameter[] parameters = SqlParameterBuilder.Create()
+				.AddInt("@Id",newsId)
+				.Build();
+			return SqlDb.UpdateOrDelete(SqlDb.GetConnection,
+				sql,
+				parameters);
+
+		}
+		public int Delete2(int newsId)
+		{
+			string sql = @"DELETE News WHERE Id=@Id";
+			SqlParameter[] parameters = SqlParameterBuilder.Create()
+				.AddInt("@Id", newsId)
+				.Build();
+			using (var conn = SqlDb.GetConnection("default"))
+			{
+				conn.Open();
+				using (var cmd = new SqlCommand(sql, conn))
+				{
+					cmd.Parameters.AddRange(parameters);
+					return cmd.ExecuteNonQuery();//傳回被異動的比數,諾為0,表示沒有異動紀錄
+				}
+			}
+
+		}
 	}
 }
