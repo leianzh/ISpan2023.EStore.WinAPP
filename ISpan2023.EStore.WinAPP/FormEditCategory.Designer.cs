@@ -32,6 +32,7 @@
 			this.textBoxName = new System.Windows.Forms.TextBox();
 			this.textBoxDO = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.btnUpdate = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -66,11 +67,22 @@
 			this.label2.TabIndex = 3;
 			this.label2.Text = "Display Order";
 			// 
+			// btnUpdate
+			// 
+			this.btnUpdate.Location = new System.Drawing.Point(130, 159);
+			this.btnUpdate.Name = "btnUpdate";
+			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+			this.btnUpdate.TabIndex = 4;
+			this.btnUpdate.Text = "Update";
+			this.btnUpdate.UseVisualStyleBackColor = true;
+			this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+			// 
 			// FormEditCategory
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btnUpdate);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.textBoxDO);
 			this.Controls.Add(this.textBoxName);
@@ -89,5 +101,6 @@
 		private System.Windows.Forms.TextBox textBoxName;
 		private System.Windows.Forms.TextBox textBoxDO;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Button btnUpdate;
 	}
 }

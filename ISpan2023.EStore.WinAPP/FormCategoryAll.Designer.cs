@@ -1,6 +1,6 @@
 ﻿namespace ISpan2023.EStore.WinAPP
 {
-	partial class FormProducts
+	partial class FormCategoryAll
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -38,26 +38,26 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(24, 30);
-			this.dataGridView1.MaximumSize = new System.Drawing.Size(764, 377);
-			this.dataGridView1.MinimumSize = new System.Drawing.Size(429, 236);
-			this.dataGridView1.MultiSelect = false;
+			this.dataGridView1.Location = new System.Drawing.Point(51, 13);
+			this.dataGridView1.MaximumSize = new System.Drawing.Size(589, 480);
+			this.dataGridView1.MinimumSize = new System.Drawing.Size(589, 480);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(764, 377);
+			this.dataGridView1.Size = new System.Drawing.Size(589, 480);
 			this.dataGridView1.TabIndex = 0;
 			// 
-			// FormProducts
+			// FormCategoryAll
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(901, 553);
 			this.Controls.Add(this.dataGridView1);
+			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(816, 489);
-			this.Name = "FormProducts";
-			this.Text = "FormProducts";
-			this.Load += new System.EventHandler(this.FormProducts_Load);
+			this.MinimumSize = new System.Drawing.Size(917, 592);
+			this.Name = "FormCategoryAll";
+			this.Text = "FormCategoryAll";
+			this.Load += new System.EventHandler(this.FormCategoryAll_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 

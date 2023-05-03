@@ -44,7 +44,12 @@
 			this.btnDeleteNews = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.btnAddCategories = new System.Windows.Forms.Button();
+			this.btnUpdateCategory = new System.Windows.Forms.Button();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.btnDeletCategories = new System.Windows.Forms.Button();
+			this.btnSearchCategory = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -98,7 +103,7 @@
 			// 
 			// buttonCategory
 			// 
-			this.buttonCategory.Location = new System.Drawing.Point(34, 189);
+			this.buttonCategory.Location = new System.Drawing.Point(20, 31);
 			this.buttonCategory.Name = "buttonCategory";
 			this.buttonCategory.Size = new System.Drawing.Size(126, 23);
 			this.buttonCategory.TabIndex = 5;
@@ -108,7 +113,7 @@
 			// 
 			// textBoxCategory
 			// 
-			this.textBoxCategory.Location = new System.Drawing.Point(211, 190);
+			this.textBoxCategory.Location = new System.Drawing.Point(245, 75);
 			this.textBoxCategory.Name = "textBoxCategory";
 			this.textBoxCategory.Size = new System.Drawing.Size(100, 22);
 			this.textBoxCategory.TabIndex = 6;
@@ -116,15 +121,15 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(178, 194);
+			this.label1.Location = new System.Drawing.Point(172, 74);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(18, 12);
+			this.label1.Size = new System.Drawing.Size(67, 12);
 			this.label1.TabIndex = 7;
-			this.label1.Text = "Id:";
+			this.label1.Text = "CategoriesId:";
 			// 
 			// btnSearchProducts
 			// 
-			this.btnSearchProducts.Location = new System.Drawing.Point(34, 230);
+			this.btnSearchProducts.Location = new System.Drawing.Point(34, 210);
 			this.btnSearchProducts.Name = "btnSearchProducts";
 			this.btnSearchProducts.Size = new System.Drawing.Size(107, 23);
 			this.btnSearchProducts.TabIndex = 8;
@@ -194,7 +199,7 @@
 			// 
 			// btnAddCategories
 			// 
-			this.btnAddCategories.Location = new System.Drawing.Point(180, 230);
+			this.btnAddCategories.Location = new System.Drawing.Point(20, 66);
 			this.btnAddCategories.Name = "btnAddCategories";
 			this.btnAddCategories.Size = new System.Drawing.Size(106, 23);
 			this.btnAddCategories.TabIndex = 15;
@@ -202,17 +207,60 @@
 			this.btnAddCategories.UseVisualStyleBackColor = true;
 			this.btnAddCategories.Click += new System.EventHandler(this.btnAddCategories_Click);
 			// 
+			// btnUpdateCategory
+			// 
+			this.btnUpdateCategory.Location = new System.Drawing.Point(20, 95);
+			this.btnUpdateCategory.Name = "btnUpdateCategory";
+			this.btnUpdateCategory.Size = new System.Drawing.Size(107, 23);
+			this.btnUpdateCategory.TabIndex = 16;
+			this.btnUpdateCategory.Text = "更新Categories";
+			this.btnUpdateCategory.UseVisualStyleBackColor = true;
+			this.btnUpdateCategory.Click += new System.EventHandler(this.btnUpdateCategory_Click);
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.btnSearchCategory);
+			this.groupBox2.Controls.Add(this.btnDeletCategories);
+			this.groupBox2.Controls.Add(this.buttonCategory);
+			this.groupBox2.Controls.Add(this.btnUpdateCategory);
+			this.groupBox2.Controls.Add(this.btnAddCategories);
+			this.groupBox2.Controls.Add(this.label1);
+			this.groupBox2.Controls.Add(this.textBoxCategory);
+			this.groupBox2.Location = new System.Drawing.Point(413, 255);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(384, 169);
+			this.groupBox2.TabIndex = 17;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "維護Category";
+			// 
+			// btnDeletCategories
+			// 
+			this.btnDeletCategories.Location = new System.Drawing.Point(20, 124);
+			this.btnDeletCategories.Name = "btnDeletCategories";
+			this.btnDeletCategories.Size = new System.Drawing.Size(106, 23);
+			this.btnDeletCategories.TabIndex = 17;
+			this.btnDeletCategories.Text = "刪除Categories";
+			this.btnDeletCategories.UseVisualStyleBackColor = true;
+			this.btnDeletCategories.Click += new System.EventHandler(this.btnDeletCategories_Click);
+			// 
+			// btnSearchCategory
+			// 
+			this.btnSearchCategory.Location = new System.Drawing.Point(164, 31);
+			this.btnSearchCategory.Name = "btnSearchCategory";
+			this.btnSearchCategory.Size = new System.Drawing.Size(130, 23);
+			this.btnSearchCategory.TabIndex = 18;
+			this.btnSearchCategory.Text = "取得所有Categories";
+			this.btnSearchCategory.UseVisualStyleBackColor = true;
+			this.btnSearchCategory.Click += new System.EventHandler(this.btnSearchCategory_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.btnAddCategories);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.btnSearchProducts);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.textBoxCategory);
-			this.Controls.Add(this.buttonCategory);
 			this.Controls.Add(this.btnUsing);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.checkBoxpooling);
@@ -222,6 +270,8 @@
 			this.Text = "Form1";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -245,6 +295,10 @@
 		private System.Windows.Forms.Button btnDeleteNews;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button btnAddCategories;
+		private System.Windows.Forms.Button btnUpdateCategory;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.Button btnDeletCategories;
+		private System.Windows.Forms.Button btnSearchCategory;
 	}
 }
 

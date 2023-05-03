@@ -9,9 +9,11 @@ using System.Diagnostics;
 
 namespace ISpan2023.EStore.SqlDataLayer
 {
-	public class ProductRepository//查詢多筆
+	public class ProductRepository//Search查詢多筆
 	{
-		public List<ProductDto> Search(int? categoryId = null)
+		public List<ProductDto> Search(int? categoryId = null)//join categories,products
+		 //將SqlDataReader 轉型為 List<ProductDto>
+		 //傳回
 		{
 			Func<SqlConnection> funcConn = SqlDb.GetConnection;
 			#region sql

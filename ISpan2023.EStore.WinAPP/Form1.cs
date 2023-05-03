@@ -19,23 +19,23 @@ namespace ISpan2023.EStore.WinAPP
 			InitializeComponent();
 		}
 
-		private void button1_Click(object sender, EventArgs e)//取得連線字串
+		private void button1_Click(object sender, EventArgs e)//GetConnectString取得連線字串
 		{
 
 			string connStr = SqlDb.GetConnectString("default");
 			labelConnStr.Text = connStr;
 		}
 
-		private void button2_Click(object sender, EventArgs e)//連線到SQL
+		private void button2_Click(object sender, EventArgs e)//SqlConnection SQL連線
 		{
 			SqlDb.Pooling = checkBoxpooling.Checked;
 			SqlConnection conn = SqlDb.GetConnection("default");
 			conn.Open();
 
 			string sql = "SELECT ID FROM News";
-			SqlCommand command = new SqlCommand(sql, conn);
+			SqlCommand command = new SqlCommand(sql, conn);//SqlCommand 下CRUD指令
 
-			SqlDataReader reader = command.ExecuteReader();
+			SqlDataReader reader = command.ExecuteReader();//ExecuteReader 執行完之後放到SqlDataReader
 			reader.Close();
 			conn.Close();//記得一定要關
 
@@ -119,6 +119,46 @@ namespace ISpan2023.EStore.WinAPP
 		private void btnAddCategories_Click(object sender, EventArgs e)
 		{
 			var frm = new FormAddCategory();
+			frm.ShowDialog();
+		}
+
+		private void btnUpdateCategory_Click(object sender, EventArgs e)
+		{
+			bool isInt = int.TryParse(textBoxCategory.Text, out int categoryId);
+			if (!isInt)
+			{
+				MessageBox.Show("請輸入 category Id , 再試一次");
+				return;
+			}
+
+
+			var frm = new FormEditCategory(categoryId);
+			frm.ShowDialog();
+		}
+
+		private void btnDeletCategories_Click(object sender, EventArgs e)
+		{
+			bool isInt = int.TryParse(textBoxCategory.Text, out int categoryId);
+			if (!isInt)
+			{
+				MessageBox.Show("請輸入 category Id,再試一次");
+				return;
+			}
+			int rowAffected = new CategoryRepository().Delete(categoryId);
+			if (rowAffected == 1)
+			{
+				MessageBox.Show("紀錄已刪除");
+			}
+			else
+			{
+				MessageBox.Show("沒有紀錄被刪除，可能此紀錄不存在");
+			}
+
+		}
+
+		private void btnSearchCategory_Click(object sender, EventArgs e)
+		{
+			var frm = new FormCategoryAll();
 			frm.ShowDialog();
 		}
 	}

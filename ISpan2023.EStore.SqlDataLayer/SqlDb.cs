@@ -13,7 +13,7 @@ namespace ISpan2023.EStore.SqlDataLayer
 	{
 		public static string ApplicationName { get; set; }
 		public static bool Pooling { get; set; } = true;
-		public static string GetConnectString(string keyOfConnString)
+		public static string GetConnectString(string keyOfConnString)//GetConnectString取得連線字串
 		{
 			string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[keyOfConnString].ToString();
 			if (string.IsNullOrEmpty(connStr)) 
@@ -30,7 +30,7 @@ namespace ISpan2023.EStore.SqlDataLayer
 			return sb.ToString();
 			
 		}
-		public static SqlConnection GetConnection(string keyOfConnString) 
+		public static SqlConnection GetConnection(string keyOfConnString)//SqlConnection SQL連線
 		{
 			string connStr = GetConnectString(keyOfConnString);
 			return new SqlConnection(connStr);
@@ -49,7 +49,7 @@ namespace ISpan2023.EStore.SqlDataLayer
 				using(var cmd = new SqlCommand(sql,conn))
 				{
 					if (parameters != null) cmd.Parameters.AddRange(parameters);
-					return cmd.ExecuteNonQuery();
+					return cmd.ExecuteNonQuery();// 傳回被異動的筆數,若為零,表示沒有異動記錄
 				}
 			}
 
@@ -71,6 +71,7 @@ namespace ISpan2023.EStore.SqlDataLayer
 		{
 			using (var conn = funcConn())
 			{
+				conn.Open();
 				using (var cmd = new SqlCommand(sql, conn))
 				{
 					if (parameters != null) cmd.Parameters.AddRange(parameters);

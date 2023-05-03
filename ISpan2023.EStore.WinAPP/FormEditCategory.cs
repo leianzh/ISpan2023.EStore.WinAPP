@@ -33,5 +33,28 @@ namespace ISpan2023.EStore.WinAPP
 			textBoxName.Text = category.Name;
 			textBoxDO.Text = category.DisplayOrder.ToString();
 		}
+
+		private void btnUpdate_Click(object sender, EventArgs e)
+		{
+			var categories = new Category
+			{
+				Id = _categoryId,
+				Name = textBoxName.Text,
+				DisplayOrder = int.Parse(textBoxDO.Text),
+				
+			};
+
+			int rowsAffected = new CategoryRepository().Update(categories);
+			//如果傳回筆數是1,表示有正確更新一筆
+			if (rowsAffected > 0)
+			{
+				MessageBox.Show("紀錄已更新");
+			}
+			else
+			{
+				MessageBox.Show("紀錄沒有被異動，可能紀錄已經被刪除");
+			}
+			FormEditCategory_Load(this, EventArgs.Empty);
+		}
 	}
 }

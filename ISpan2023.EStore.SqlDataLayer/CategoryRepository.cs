@@ -11,6 +11,7 @@ namespace ISpan2023.EStore.SqlDataLayer
 {
 	public class CategoryRepository
 	{
+
 		public Category Get(int categoryId) 
 		{
 			using (SqlConnection conn = SqlDb.GetConnection("default"))
@@ -20,7 +21,7 @@ namespace ISpan2023.EStore.SqlDataLayer
 				using(var cmd  = conn.CreateCommand()) 
 				{
 					cmd.CommandText = sql;
-					var reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+					var reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);//reader不再使用時,自動關閉connection
 					if (reader.Read())
 					{
 						var category = new Category();
@@ -39,6 +40,28 @@ namespace ISpan2023.EStore.SqlDataLayer
 					}
 				}
 			}
+		}
+		public List<Category> Search(int? categoryId = null)
+		{
+			Func<SqlConnection> funcConn = SqlDb.GetConnection;
+			#region sql
+			var sql = @"select C.Id,C.Name,C.DisplayOrder
+from Categories as C
+full join Products as P
+on P.CategoryId = C.Id";
+			#endregion
+			
+			Func<SqlDataReader, Category> funcAssembler = reader =>
+			{
+				return new Category()
+				{
+					Id = reader.GetInt32("Id", 0),
+					Name = reader.GetString("Name"),
+					DisplayOrder = reader.GetInt32("DisplayOrder", 0),
+				};
+			};
+			return SqlDb.Search<Category>(funcConn, funcAssembler, sql);
+
 		}
 		public  int Create(Category dto) 
 		{
@@ -70,9 +93,8 @@ SET @newId = SCOPE_IDENTITY()";
 		{
 			string sql = @"UPDATE Categories SET
 Name =@Name,
-DisplayOrder=@DisplayOrder,
-WHERE
-Id=@Id";
+DisplayOrder=@DisplayOrder
+WHERE Id=@Id";
 			SqlParameter[] parameters = SqlParameterBuilder.Create()
 				.AddNvarchar("@Name", 30, dto.Name)
 				.AddInt("@DisplayOrder", dto.DisplayOrder)
@@ -81,6 +103,17 @@ Id=@Id";
 			return SqlDb.UpdateOrDelete(SqlDb.GetConnection,
 				sql,
 				parameters);
+		}
+		public int Delete(int categoryId)
+		{
+			string sql = @"DELETE Categories WHERE Id=@Id";
+			SqlParameter[] parameters = SqlParameterBuilder.Create()
+				.AddInt("@Id", categoryId)
+				.Build();
+			return SqlDb.UpdateOrDelete(SqlDb.GetConnection,
+				sql,
+				parameters);
+
 		}
 
 	}
