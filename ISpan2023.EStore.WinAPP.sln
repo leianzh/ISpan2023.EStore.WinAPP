@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{374848A0-4B8A-4953-AD1B-3BE7B2017E12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISPan.MultiLayers.WinApp", "ISPan.MultiLayers.WinApp\ISPan.MultiLayers.WinApp.csproj", "{3D1F5027-3F6E-46E5-949D-9EC06E8D4D83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{374848A0-4B8A-4953-AD1B-3BE7B2017E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{374848A0-4B8A-4953-AD1B-3BE7B2017E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{374848A0-4B8A-4953-AD1B-3BE7B2017E12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D1F5027-3F6E-46E5-949D-9EC06E8D4D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1F5027-3F6E-46E5-949D-9EC06E8D4D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1F5027-3F6E-46E5-949D-9EC06E8D4D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1F5027-3F6E-46E5-949D-9EC06E8D4D83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
