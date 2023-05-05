@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ISPan.MultiLayers.WinApp
 {
-	public partial class Form1 : Form
+	public partial class FormDelete : Form
 	{
-		public Form1()
+		public FormDelete()
 		{
 			InitializeComponent();
 		}

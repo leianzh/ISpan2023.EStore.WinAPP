@@ -44,6 +44,7 @@ namespace ISPan.MultiLayers.WinApp.ViewModel
         public string Name { get; set; }
 		[Display(Name = "顯示順序")]
 		[Required(ErrorMessage = "{0}必填")]
+		[Range(1,1000, ErrorMessage = "{0}必須介於1~1000之間")]
 		public int DisplayOrder { get; set; }
     }
 	public static class CategoryAddVMExs //針對VM轉dto的擴充方法

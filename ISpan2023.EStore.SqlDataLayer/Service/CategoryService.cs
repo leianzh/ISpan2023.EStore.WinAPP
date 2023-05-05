@@ -13,7 +13,8 @@ namespace ISpan2023.EStore.SqlDataLayer.Service
 	public class CategoryService
 	{
 		private readonly ICategoryRepository _repo;
-		public CategoryService(ICategoryRepository repo)
+		public CategoryService(ICategoryRepository repo)//建構函數傳了ICategoryRepository
+		//所以fom去呼叫它
 		{
 			_repo = repo;
 		}
@@ -49,9 +50,9 @@ namespace ISpan2023.EStore.SqlDataLayer.Service
 			_repo.Delete(categoryId);
 		}
 
-		public List<CategoryDto> GetAll()
+		public List<CategoryDto> Search(string name,int? id)
 		{
-			List<CategoryEntity> data = _repo.Search(null, null);
+			List<CategoryEntity> data = _repo.Search(name, id);
 
 			//List<CategoryDto> result = new List<CategoryDto>();
 			//foreach (CategoryEntity item in data) {
