@@ -30,5 +30,10 @@ namespace ISPan.MultiLayers.WinApp
 			frm.ShowDialog();
 
 		}
+
+		private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			this.Owner.Show();
+		}
 	}
 }

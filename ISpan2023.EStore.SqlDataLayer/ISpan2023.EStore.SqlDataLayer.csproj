@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -46,14 +47,18 @@
     <Compile Include="CategoryRepository.cs" />
     <Compile Include="Core\CategoryEntity.cs" />
     <Compile Include="DTOS\CatrgoryDto.cs" />
+    <Compile Include="infra\MemoryRepositories\MemoryCategoryRepository.cs" />
     <Compile Include="infra\SqlRepositories\SqlCategoryRepository.cs" />
+    <Compile Include="infra\SqlRepositories\SqlUserRepository.cs" />
     <Compile Include="interfaces\ICategoryRepository.cs" />
+    <Compile Include="interfaces\IUserRepository.cs" />
     <Compile Include="NewsDto.cs" />
     <Compile Include="NewsEditDto.cs" />
     <Compile Include="NewsRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CategoryService.cs" />
+    <Compile Include="Service\UserService.cs" />
     <Compile Include="sqlDataReaderExtensions.cs" />
     <Compile Include="SqlDb.cs" />
     <Compile Include="SqlParameterBuilder.cs" />
